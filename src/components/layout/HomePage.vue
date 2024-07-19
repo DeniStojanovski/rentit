@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <h1>Rent a car best price</h1>
+    <h1>RentIt - easy and cheap</h1>
     <form action="">
       <div class="form-control">
-        <label for="pickup">Pick-up Location</label>
+        <label for="pickup">Pick-up Location:</label>
         <input
           aria-labelledby="pick up location"
           type="text"
@@ -11,7 +11,7 @@
           id="pickup"
           @keyup="refreshSearch"
           v-model.trim="searchTerm"
-          placeholder="city, airport, station, region, district ..."
+          placeholder="city, airport, station, region..."
         />
       </div>
       <ul class="auto-gen-list">
@@ -26,7 +26,6 @@
             >
               <!-- {{ locations.bookingId | stripId }} -->
             </div>
-
             <div class="location">
               {{ locations.name }}
               {{ locations.iata ? `(${locations.iata})` : '' }}
@@ -44,18 +43,26 @@
         </li>
       </ul>
     </form>
+
+    <div class="#app">
+      <!-- <car-list></car-list> -->
+      <car-details></car-details>
+      <car-request></car-request>
+    </div>
     <nav>
-      <h2>Sales</h2>
-      <h3>Order</h3>
+      <base-button>SALES</base-button>
+      <base-button>ORDER</base-button>
     </nav>
-    <button>HOME</button>
-    <button>AWAY</button>
   </div>
 </template>
 
 <script setup>
-import axios from 'axios';
 import { ref, computed } from 'vue';
+import axios from 'axios';
+// import CarList from '../../pages/cars/CarList.vue';
+import CarDetails from '../../pages/cars/CarDetails.vue';
+import CarRequest from '../../components/requests/CarRequest.vue';
+import BaseButton from '../ui/BaseButton.vue';
 
 const data = ref([]);
 const searchTerm = ref('');
@@ -105,5 +112,48 @@ h1 {
   align-items: center;
   justify-content: center;
   /* padding: 10px; */
+}
+.form-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+}
+ul {
+  color: rgb(0, 0, 0);
+  /* border: 1px solid black; */
+  text-align: center;
+  list-style-type: none;
+  margin: 10px;
+  padding: 10px;
+}
+li {
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.app {
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+  /* text-align: center; */
+  /* color: #2c3e50; */
+  margin-top: 60px;
+}
+nav {
+  /* font-style: inherit; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 </style>

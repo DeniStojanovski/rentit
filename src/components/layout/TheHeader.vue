@@ -2,12 +2,17 @@
   <header>
     <h1><a href="">RentIt</a></h1>
     <nav>
-      <h3><a href="">Offers</a></h3>
+      <h3><a href="">Cars</a></h3>
       <h3><a href="">Contact</a></h3>
-      <button>Login</button>
+      <base-button>Login</base-button>
     </nav>
   </header>
 </template>
+
+<script setup>
+// import BaseBadge from '../ui/BaseBadge.vue';
+import BaseButton from '../ui/BaseButton.vue';
+</script>
 
 <style scoped>
 header {
